@@ -68,6 +68,10 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s, transform 0.1s;
+    
+    /* ESTA LINHA É A CHAVE DO ENQUADRAMENTO */
+    width: 100%; 
+    margin-top: 5px; /* Dá um leve respiro em relação ao seletor acima */
 }
 
 button:hover {
@@ -77,7 +81,6 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
-
 /* ===== LISTA DE TRANSAÇÕES E TÍTULOS ===== */
 h2 {
     font-size: 1.2rem;
