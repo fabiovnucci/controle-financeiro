@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Controle Financeiro</title>
+  <!-- Link para o CSS externo ou Tailwind/Bootstrap se quiser -->
+</head>
+<body>
+  <h1>Controle Financeiro</h1>
+
+  <!-- Campo para digitar o valor da transação -->
+  <label for="valor">Valor (R$)</label>
+  <input type="number" id="valor" placeholder="Digite um valor">
+
+  <!-- Select para escolher se é ganho ou gasto -->
+  <label for="tipo">Tipo</label>
+  <select id="tipo">
+    <option value="ganho">Ganho</option>
+    <option value="gasto">Gasto</option>
+  </select>
+
+  <!-- Botão que chama a função adicionarTransacao() -->
+  <button onclick="adicionarTransacao()">Adicionar</button>
+
+  <!-- Lista que vai receber as transações adicionadas -->
+  <h2>Transações</h2>
+  <ul id="lista">
+    <!-- Cada transação será adicionada aqui pelo JS -->
+  </ul>
+
+  <!-- Totais -->
+  <p>Total Ganho: R$ <span id="totalGanho">0</span></p>
+  <p>Total Gasto: R$ <span id="totalGasto">0</span></p>
+  <p>Lucro: R$ <span id="lucro">0</span></p>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
