@@ -18,7 +18,7 @@ Feito com **HTML, CSS, JavaScript** e boas práticas de front-end.
 ## Tecnologias usadas
 
 - HTML
-- CSS (Tailwind / Bootstrap)
+- CSS puro
 - JavaScript
 - Git / GitHub
 

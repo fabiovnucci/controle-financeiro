@@ -1,145 +1,184 @@
 /* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #eef2f7;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza tudo horizontalmente */
+    padding: 20px;
+    line-height: 1.6;
+    min-height: 100vh; /* Garante que o corpo ocupe a altura toda */
 }
 
 /* ===== TÍTULO PRINCIPAL ===== */
 h1 {
-  color: #2c3e50;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
-/* ===== ÁREA DE INPUTS (DIV) ===== */
-div {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 30px;
+/* ===== CONTAINER DE ENTRADA (O CARD BRANCO) ===== */
+/* Ajustei para pegar apenas a div que contém os inputs */
+body > div:first-of-type {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
 }
 
 input[type="number"], 
 select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 input[type="number"]:focus, 
 select:focus {
-  border-color: #3498db;
+    border-color: #3498db;
 }
 
 button {
-  background-color: #27ae60;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
+    background-color: #27ae60;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
 }
 
 button:hover {
-  background-color: #219150;
+    background-color: #219150;
 }
 
 button:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
-/* ===== LISTA DE TRANSAÇÕES ===== */
+/* ===== LISTA DE TRANSAÇÕES E TÍTULOS ===== */
 h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #34495e;
-  width: 100%;
-  max-width: 400px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #34495e;
+    width: 100%;
+    max-width: 400px; /* Mantém o alinhamento com o card */
+    text-align: left;
 }
 
 ul {
-  list-style: none;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
+    list-style: none;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
 }
 
 ul li {
-  background: #fff;
-  margin-bottom: 8px;
-  padding: 12px 15px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  border-left: 5px solid #bdc3c7; /* Cor neutra padrão */
+    background: #fff;
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid #bdc3c7;
 }
-
-/* Nota: Como o JS insere o texto bruto no li, 
-   o CSS abaixo foca na estrutura geral da lista */
 
 /* ===== ÁREA DE RESUMO (TOTAIS) ===== */
 h3 {
-  width: 100%;
-  max-width: 400px;
-  font-size: 1rem;
-  background: #fff;
-  padding: 10px 15px;
-  margin-bottom: 5px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    background: #fff;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 #totalGanho { color: #27ae60; font-weight: bold; }
 #totalGasto { color: #e74c3c; font-weight: bold; }
 
-/* Destaque para o Lucro */
+/* Destaque para o Lucro (último h2) */
 h2:last-of-type {
-  background: #2c3e50;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  margin-top: 15px;
+    background: #2c3e50;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 15px;
+    max-width: 400px;
 }
 
 #lucro {
-  font-size: 1.5rem;
-  display: block;
-  margin-top: 5px;
+    font-size: 1.5rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ===== ESTILO DO RODAPÉ (FOOTER) ===== */
+.main-footer {
+    margin-top: auto; /* Empurra o footer para o fim se a página for curta */
+    padding: 40px 20px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* Agora segue a mesma largura dos cards */
+}
+
+.main-footer p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.main-footer strong {
+    color: #2c3e50;
+}
+
+.footer-links a {
+    font-size: 0.85rem;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #2980b9;
+    text-decoration: underline;
 }
 
 /* ===== RESPONSIVIDADE ===== */
-@media (max-width: 400px) {
-  body {
-    padding: 10px;
-  }
+@media (max-width: 420px) {
+    body {
+        padding: 15px;
+    }
+    
+    body > div:first-of-type, ul, h2, h3, .main-footer {
+        max-width: 100%;
+    }
 }
