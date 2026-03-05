@@ -8,10 +8,10 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 0; /* Ajustado para respiro vertical */
 }
 
-h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; }
+h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; text-align: center; }
 
 /* CONTAINER DASHBOARD */
 .container-dashboard {
@@ -21,6 +21,7 @@ h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 
   width: 100%;
   max-width: 950px;
   align-items: flex-start;
+  padding: 0 20px; /* Margem de segurança para o desktop */
 }
 
 .coluna-box {
@@ -33,7 +34,7 @@ h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 
 
 /* FORMULÁRIO */
 #formulario { display: flex; flex-direction: column; gap: 15px; }
-input, select, button { padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; outline: none; }
+input, select, button { padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; outline: none; width: 100%; }
 input:focus { border-color: #27ae60; }
 button { background: #27ae60; color: white; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
 button:hover { background: #219150; transform: translateY(-2px); }
@@ -42,7 +43,6 @@ button:hover { background: #219150; transform: translateY(-2px); }
 .header-transacoes { background: #2c3e50; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; }
 ul { list-style: none; margin-bottom: 20px; max-height: 250px; overflow-y: auto; }
 
-/* Estilo dos itens injetados pelo JS */
 ul li { 
   background: #fdfdfd; 
   padding: 12px 15px; 
@@ -57,7 +57,6 @@ ul li {
 .item-ganho { border-left: 6px solid #27ae60; }
 .item-gasto { border-left: 6px solid #e74c3c; }
 
-/* Mensagem quando a lista está vazia */
 ul:empty::after {
   content: "Nenhuma transação registrada.";
   display: block;
@@ -93,28 +92,37 @@ ul:empty::after {
 .footer-item a { color: #95a5a6; text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
 .footer-item a:hover { color: #27ae60; }
 
-/* CELULAR */
-@media (max-width: 800px) {
-  .container-dashboard { flex-direction: column; }
-  .main-footer { flex-direction: column; padding: 30px 20px; }
-}
-
-/* Estilo para o Link com Ícone */
+/* ÍCONE GITHUB */
 .github-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Espaço entre o ícone e o texto */
+    gap: 8px;
     font-size: 0.9rem;
     color: #95a5a6;
     text-decoration: none;
     transition: 0.3s ease;
 }
+.github-link i { font-size: 1.2rem; }
+.github-link:hover { color: #27ae60; transform: translateY(-2px); }
 
-.github-link i {
-    font-size: 1.2rem; /* Deixa o ícone um pouco maior que o texto */
-}
+/* AJUSTE PARA CELULAR (MELHORADO) */
+@media (max-width: 800px) {
+  .container-dashboard { 
+    flex-direction: column; 
+    align-items: center; /* Centraliza as colunas */
+    padding: 0; /* Remove padding lateral do container pai */
+  }
 
-.github-link:hover {
-    color: #27ae60; /* Muda para o verde FVN TECH ao passar o mouse */
-    transform: translateY(-2px); /* Efeito de levante leve */
+  .coluna-box {
+    width: 90%; /* Força o card a ocupar 90% da largura, deixando 5% de margem cada lado */
+    max-width: 400px; /* Evita que fique muito largo em tablets */
+    margin-bottom: 20px;
+    padding: 20px; /* Reduz um pouco o padding interno */
+  }
+
+  .main-footer { 
+    flex-direction: column; 
+    padding: 30px 20px; 
+    text-align: center;
+  }
 }
