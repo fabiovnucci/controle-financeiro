@@ -3,39 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Controle Financeiro - Motorista</title>
+  <title>Controle Financeiro - FVN TECH</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
   <h1>Controle Financeiro</h1>
 
-  <div id="formulario">
-    <input type="number" id="valor" placeholder="Valor (R$)">
-    
-    <select id="tipo">
-      <option value="ganho">Ganho</option>
-      <option value="gasto">Gasto</option>
-    </select>
-    
-    <button onclick="adicionarTransacao()">Adicionar</button>
+  <div class="container-dashboard">
+    <div id="formulario" class="coluna-box">
+      <input type="number" id="valor" placeholder="Valor (R$)">
+      <select id="tipo">
+        <option value="ganho">Ganho</option>
+        <option value="gasto">Gasto</option>
+      </select>
+      <button onclick="adicionarTransacao()">Adicionar</button>
+    </div>
+
+    <div class="coluna-box">
+      <div class="header-transacoes">Histórico</div>
+      <ul id="lista"></ul>
+
+      <div class="cards-resumo">
+        <h3>Total Ganho: <span id="totalGanho">R$ 0,00</span></h3>
+        <h3>Total Gasto: <span id="totalGasto">R$ 0,00</span></h3>
+        <div class="lucro-box">
+          <h2>Lucro</h2>
+          <span id="lucro">R$ 0,00</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <h2>Transações</h2>
-  <ul id="lista"></ul>
-
-  <h3>Total Ganho: R$ <span id="totalGanho">0</span></h3>
-  <h3>Total Gasto: R$ <span id="totalGasto">0</span></h3>
-  <h2>Lucro: R$ <span id="lucro">0</span></h2>
-
   <footer class="main-footer">
-    <p>Desenvolvido por <strong>Fabio VNucci</strong></p>
-    <div class="footer-links">
-        <a href="https://github.com/fabiovnucci/controle-financeiro" target="_blank">
-            Ver código no GitHub
-        </a>
+    <div class="footer-item">
+      <img src="img/logofvn.png" alt="FVN TECH" class="footer-logo">
+      <p>© 2026 <strong>FVN TECH</strong></p>
     </div>
-</footer>
+    <div class="footer-item">
+      <p>Desenvolvido por Fabio VNucci</p>
+      <span class="version-tag">v1.1.0</span>
+    </div>
+  <div class="footer-item">
+    <a href="https://github.com/fabiovnucci/controle-financeiro" target="_blank" class="github-link">
+        <i class="fab fa-github"></i> Repositório no GitHub
+    </a>
+</div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

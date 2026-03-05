@@ -1,187 +1,120 @@
-/* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eef2f7;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza tudo horizontalmente */
-    padding: 20px;
-    line-height: 1.6;
-    min-height: 100vh; /* Garante que o corpo ocupe a altura toda */
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #eef2f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* ===== TÍTULO PRINCIPAL ===== */
-h1 {
-    color: #2c3e50;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    text-align: center;
+h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; }
+
+/* CONTAINER DASHBOARD */
+.container-dashboard {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  width: 100%;
+  max-width: 950px;
+  align-items: flex-start;
 }
 
-/* ===== CONTAINER DE ENTRADA (O CARD BRANCO) ===== */
-/* Ajustei para pegar apenas a div que contém os inputs */
-body > div:first-of-type {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
+.coluna-box {
+  flex: 1;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
 }
 
-input[type="number"], 
-select {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s;
+/* FORMULÁRIO */
+#formulario { display: flex; flex-direction: column; gap: 15px; }
+input, select, button { padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; outline: none; }
+input:focus { border-color: #27ae60; }
+button { background: #27ae60; color: white; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
+button:hover { background: #219150; transform: translateY(-2px); }
+
+/* LISTA DE TRANSAÇÕES */
+.header-transacoes { background: #2c3e50; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; }
+ul { list-style: none; margin-bottom: 20px; max-height: 250px; overflow-y: auto; }
+
+/* Estilo dos itens injetados pelo JS */
+ul li { 
+  background: #fdfdfd; 
+  padding: 12px 15px; 
+  margin-bottom: 8px; 
+  border-radius: 6px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
 
-input[type="number"]:focus, 
-select:focus {
-    border-color: #3498db;
+.item-ganho { border-left: 6px solid #27ae60; }
+.item-gasto { border-left: 6px solid #e74c3c; }
+
+/* Mensagem quando a lista está vazia */
+ul:empty::after {
+  content: "Nenhuma transação registrada.";
+  display: block;
+  text-align: center;
+  color: #95a5a6;
+  padding: 20px;
+  font-style: italic;
 }
 
-button {
-    background-color: #27ae60;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.1s;
-    
-    /* ESTA LINHA É A CHAVE DO ENQUADRAMENTO */
-    width: 100%; 
-    margin-top: 5px; /* Dá um leve respiro em relação ao seletor acima */
-}
+/* RESUMO */
+.cards-resumo h3 { font-size: 1rem; padding: 10px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; color: #555; }
+.lucro-box { background: #2c3e50; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px; }
+#lucro { font-size: 1.8rem; font-weight: bold; display: block; margin-top: 5px; }
 
-button:hover {
-    background-color: #219150;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-/* ===== LISTA DE TRANSAÇÕES E TÍTULOS ===== */
-h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #34495e;
-    width: 100%;
-    max-width: 400px; /* Mantém o alinhamento com o card */
-    text-align: left;
-}
-
-ul {
-    list-style: none;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-}
-
-ul li {
-    background: #fff;
-    margin-bottom: 8px;
-    padding: 12px 15px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-left: 5px solid #bdc3c7;
-}
-
-/* ===== ÁREA DE RESUMO (TOTAIS) ===== */
-h3 {
-    width: 100%;
-    max-width: 400px;
-    font-size: 1rem;
-    background: #fff;
-    padding: 10px 15px;
-    margin-bottom: 5px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-#totalGanho { color: #27ae60; font-weight: bold; }
-#totalGasto { color: #e74c3c; font-weight: bold; }
-
-/* Destaque para o Lucro (último h2) */
-h2:last-of-type {
-    background: #2c3e50;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-    border-radius: 8px;
-    margin-top: 15px;
-    max-width: 400px;
-}
-
-#lucro {
-    font-size: 1.5rem;
-    display: block;
-    margin-top: 5px;
-}
-
-/* ===== ESTILO DO RODAPÉ (FOOTER) ===== */
+/* RODAPÉ FVN TECH */
 .main-footer {
-    margin-top: auto; /* Empurra o footer para o fim se a página for curta */
-    padding: 40px 20px 20px;
-    text-align: center;
-    width: 100%;
-    max-width: 400px; /* Agora segue a mesma largura dos cards */
+  width: 100%;
+  background: #1a1a1a;
+  color: white;
+  padding: 30px 10%;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 5px solid #27ae60;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.main-footer p {
+.footer-item { flex: 1; min-width: 150px; text-align: center; }
+.footer-logo { width: 80px; margin-bottom: 10px; }
+.version-tag { color: #27ae60; border: 1px solid #27ae60; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
+.footer-item a { color: #95a5a6; text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
+.footer-item a:hover { color: #27ae60; }
+
+/* CELULAR */
+@media (max-width: 800px) {
+  .container-dashboard { flex-direction: column; }
+  .main-footer { flex-direction: column; padding: 30px 20px; }
+}
+
+/* Estilo para o Link com Ícone */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
     font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-bottom: 8px;
-}
-
-.main-footer strong {
-    color: #2c3e50;
-}
-
-.footer-links a {
-    font-size: 0.85rem;
-    color: #3498db;
+    color: #95a5a6;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
+    transition: 0.3s ease;
 }
 
-.footer-links a:hover {
-    color: #2980b9;
-    text-decoration: underline;
+.github-link i {
+    font-size: 1.2rem; /* Deixa o ícone um pouco maior que o texto */
 }
 
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 420px) {
-    body {
-        padding: 15px;
-    }
-    
-    body > div:first-of-type, ul, h2, h3, .main-footer {
-        max-width: 100%;
-    }
+.github-link:hover {
+    color: #27ae60; /* Muda para o verde FVN TECH ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de levante leve */
 }
