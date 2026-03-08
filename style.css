@@ -8,10 +8,28 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 20px 0; /* Ajustado para respiro vertical */
 }
 
-h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; text-align: center; }
+/* AQUI ESTÁ O AJUSTE PARA DESGRUDAR */
+header {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0 20px; /* Espaço no topo do site */
+}
+
+h1 { 
+  color: #2c3e50; 
+  margin-bottom: 10px; 
+  text-transform: uppercase; 
+  font-size: 1.5rem; 
+  letter-spacing: 1px; 
+  text-align: center; 
+}
+
+header p {
+  color: #666;
+  margin-bottom: 30px; /* Espaço para o dashboard não colar no título */
+}
 
 /* CONTAINER DASHBOARD */
 .container-dashboard {
@@ -21,7 +39,8 @@ h1 { color: #2c3e50; margin: 20px 0 30px; text-transform: uppercase; font-size: 
   width: 100%;
   max-width: 950px;
   align-items: flex-start;
-  padding: 0 20px; /* Margem de segurança para o desktop */
+  padding: 0 20px;
+  margin-bottom: 50px;
 }
 
 .coluna-box {
@@ -39,90 +58,23 @@ input:focus { border-color: #27ae60; }
 button { background: #27ae60; color: white; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
 button:hover { background: #219150; transform: translateY(-2px); }
 
-/* LISTA DE TRANSAÇÕES */
+/* LISTA */
 .header-transacoes { background: #2c3e50; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 15px; font-weight: bold; }
 ul { list-style: none; margin-bottom: 20px; max-height: 250px; overflow-y: auto; }
-
-ul li { 
-  background: #fdfdfd; 
-  padding: 12px 15px; 
-  margin-bottom: 8px; 
-  border-radius: 6px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-}
-
-.item-ganho { border-left: 6px solid #27ae60; }
-.item-gasto { border-left: 6px solid #e74c3c; }
-
-ul:empty::after {
-  content: "Nenhuma transação registrada.";
-  display: block;
-  text-align: center;
-  color: #95a5a6;
-  padding: 20px;
-  font-style: italic;
-}
+ul li { background: #fdfdfd; padding: 12px 15px; margin-bottom: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; border-left: 6px solid #ddd; }
+.item-ganho { border-left-color: #27ae60; }
+.item-gasto { border-left-color: #e74c3c; }
 
 /* RESUMO */
-.cards-resumo h3 { font-size: 1rem; padding: 10px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; color: #555; }
 .lucro-box { background: #2c3e50; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px; }
 #lucro { font-size: 1.8rem; font-weight: bold; display: block; margin-top: 5px; }
 
-/* RODAPÉ FVN TECH */
-.main-footer {
-  width: 100%;
-  background: #1a1a1a;
-  color: white;
-  padding: 30px 10%;
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 5px solid #27ae60;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
+/* RODAPÉ */
+.main-footer { width: 100%; background: #1a1a1a; color: white; padding: 30px 10%; margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 5px solid #27ae60; flex-wrap: wrap; gap: 20px; }
 .footer-item { flex: 1; min-width: 150px; text-align: center; }
 .footer-logo { width: 80px; margin-bottom: 10px; }
 .version-tag { color: #27ae60; border: 1px solid #27ae60; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
-.footer-item a { color: #95a5a6; text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
-.footer-item a:hover { color: #27ae60; }
+.github-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #95a5a6; text-decoration: none; transition: 0.3s; }
+.github-link:hover { color: #27ae60; }
 
-/* ÍCONE GITHUB */
-.github-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: #95a5a6;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-.github-link i { font-size: 1.2rem; }
-.github-link:hover { color: #27ae60; transform: translateY(-2px); }
-
-/* AJUSTE PARA CELULAR (MELHORADO) */
-@media (max-width: 800px) {
-  .container-dashboard { 
-    flex-direction: column; 
-    align-items: center; /* Centraliza as colunas */
-    padding: 0; /* Remove padding lateral do container pai */
-  }
-
-  .coluna-box {
-    width: 90%; /* Força o card a ocupar 90% da largura, deixando 5% de margem cada lado */
-    max-width: 400px; /* Evita que fique muito largo em tablets */
-    margin-bottom: 20px;
-    padding: 20px; /* Reduz um pouco o padding interno */
-  }
-
-  .main-footer { 
-    flex-direction: column; 
-    padding: 30px 20px; 
-    text-align: center;
-  }
-}
+@media (max-width: 800px) { .container-dashboard { flex-direction: column; align-items: center; } .coluna-box { width: 90%; margin-bottom: 20px; } }
