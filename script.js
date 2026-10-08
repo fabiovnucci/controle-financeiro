@@ -1,85 +1,76 @@
-// Lista de transações (Armazenamento em memória)
-let transacoes = []
+// Lista de transações (armazenamento em memória)
+const transacoes = [];
+
+const formatarMoeda = (valor) =>
+  valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 /**
- * Função chamada ao clicar no botão "Adicionar"
+ * Chamada ao clicar no botão "Adicionar"
  */
 function adicionarTransacao() {
-  const valorInput = document.getElementById("valor")
-  const tipoSelect = document.getElementById("tipo")
-  const valor = Number(valorInput.value)
-  const tipo = tipoSelect.value
+  const valorInput = document.getElementById("valor");
+  const tipoSelect = document.getElementById("tipo");
+  const valor = Number(valorInput.value);
+  const tipo = tipoSelect.value;
 
-  if (valor <= 0 || isNaN(valor)) {
-    alert("Digite um valor válido! Deve ser um número maior que 0.")
-    return
+  if (isNaN(valor) || valor <= 0) {
+    alert("Digite um valor válido! Deve ser um número maior que 0.");
+    return;
   }
 
-  transacoes.push({ valor, tipo })
+  transacoes.push({ valor, tipo });
 
-  valorInput.value = ""
-  valorInput.focus()
+  valorInput.value = "";
+  valorInput.focus();
 
-  atualizarTela()
+  atualizarTela();
 }
 
 /**
- * Função responsável por redesenhar a lista e recalcular os totais
+ * Redesenha a lista e recalcula os totais
  */
 function atualizarTela() {
-  const lista = document.getElementById("lista")
-  const totalGanhoEl = document.getElementById("totalGanho")
-  const totalGastoEl = document.getElementById("totalGasto")
-  const lucroEl = document.getElementById("lucro")
-  
-  // 1. Tenta pegar o elemento que contém o texto "Lucro"
-  // Se não existir no seu HTML, adicione id="tituloLucro" onde está escrito a palavra Lucro
-  const tituloLucroEl = document.getElementById("tituloLucro")
+  const lista = document.getElementById("lista");
+  const totalGanhoEl = document.getElementById("totalGanho");
+  const totalGastoEl = document.getElementById("totalGasto");
+  const lucroEl = document.getElementById("lucro");
+  const tituloLucroEl = document.getElementById("tituloLucro");
 
-  lista.innerHTML = ""
+  lista.innerHTML = "";
 
-  let totalGanho = 0
-  let totalGasto = 0
+  let totalGanho = 0;
+  let totalGasto = 0;
 
-  const formatarMoeda = (valor) => {
-    return valor.toLocaleString('pt-BR', { 
-      style: 'currency', 
-      currency: 'BRL' 
-    });
-  }
+  transacoes.forEach((transacao) => {
+    const li = document.createElement("li");
 
-  transacoes.forEach(transacao => {
-    const li = document.createElement("li")
-    
     li.innerHTML = `
       <span>${transacao.tipo.toUpperCase()}</span>
       <strong>${formatarMoeda(transacao.valor)}</strong>
     `;
-    
+
     if (transacao.tipo === "ganho") {
-      li.classList.add("item-ganho")
-      totalGanho += transacao.valor
+      li.classList.add("item-ganho");
+      totalGanho += transacao.valor;
     } else {
-      li.classList.add("item-gasto")
-      totalGasto += transacao.valor
+      li.classList.add("item-gasto");
+      totalGasto += transacao.valor;
     }
 
-    lista.appendChild(li)
-  })
+    lista.appendChild(li);
+  });
 
-  totalGanhoEl.textContent = formatarMoeda(totalGanho)
-  totalGastoEl.textContent = formatarMoeda(totalGasto)
-  
-  // CÁLCULO E LÓGICA DE EXIBIÇÃO
-  const resultadoLucro = totalGanho - totalGasto
-  lucroEl.textContent = formatarMoeda(resultadoLucro)
+  totalGanhoEl.textContent = formatarMoeda(totalGanho);
+  totalGastoEl.textContent = formatarMoeda(totalGasto);
 
-  // 2. Mudança dinâmica de cor e de TEXTO
-  if (resultadoLucro >= 0) {
-    lucroEl.style.color = "#27ae60" // Verde
-    if (tituloLucroEl) tituloLucroEl.textContent = "Lucro:"
+  const resultado = totalGanho - totalGasto;
+  lucroEl.textContent = formatarMoeda(resultado);
+
+  if (resultado >= 0) {
+    lucroEl.style.color = "#2ecc71";
+    tituloLucroEl.textContent = "Lucro:";
   } else {
-    lucroEl.style.color = "#e74c3c" // Vermelho
-    if (tituloLucroEl) tituloLucroEl.textContent = "Prejuízo:"
+    lucroEl.style.color = "#ff6b6b";
+    tituloLucroEl.textContent = "Prejuízo:";
   }
 }

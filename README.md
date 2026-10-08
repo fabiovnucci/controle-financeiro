@@ -1,31 +1,40 @@
 # Controle Financeiro para Motorista de Aplicativo
 
-Projeto desenvolvido para ajudar motoristas de aplicativo a controlar ganhos, gastos e lucros diários.  
-Feito com **HTML, CSS, JavaScript** e boas práticas de front-end.
+Projeto para ajudar motoristas de aplicativo a controlar ganhos, gastos e lucro diário.
 
----
+🔗 **[Acessar o projeto online](https://fabiovnucci.github.io/controle-financeiro/)**
 
-## Funcionalidades
+## 🛠️ Tecnologias
 
-- Adicionar ganhos e gastos
-- Calcular lucro automaticamente
-- Validação de entradas (não permite números negativos)
-- Interface simples e responsiva
-- Preparado para futuras melhorias (CRUD, banco de dados, API)
+- **HTML5:** estrutura semântica do conteúdo.
+- **CSS3:** estilização e layout responsivo com Flexbox.
+- **JavaScript (Vanilla):** manipulação do DOM e eventos.
+- **Git / GitHub:** versionamento e publicação.
 
----
+## ⚙️ Funcionalidades
 
-## Tecnologias usadas
+- Adição de ganhos e gastos.
+- Histórico de transações.
+- Cálculo automático do total ganho, total gasto e lucro.
+- Validação de entradas (não permite números negativos).
+- Interface simples e responsiva.
 
-- HTML
-- CSS puro
-- JavaScript
-- Git / GitHub
+## 🔮 Próximas melhorias
 
----
+- CRUD completo (editar e remover transações).
+- Banco de dados.
+- Consumo de API.
 
-## Como usar
+## 🚀 Como executar
 
-1. Clonar o repositório:
+1. Clone este repositório:
+
 ```bash
 git clone https://github.com/fabiovnucci/controle-financeiro.git
+```
+
+2. Abra o arquivo `index.html` em qualquer navegador.
+
+---
+
+Desenvolvido por **Fabio V Nucci** | © 2026 **FVN TECH**
